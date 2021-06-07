@@ -19,6 +19,12 @@ The frontend application can be downloaded from [here].
 
 ## Installation
 
+## Project setup
+```bash
+git clone https://github.com/JasonKong/test_backend.git
+cd test_backend
+```
+
 1 - Run Composer to install the new requirement.
 
 ```sh
