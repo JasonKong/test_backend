@@ -52,6 +52,10 @@ class UpdateProductMutation extends Mutation
                 'name' => 'category_id',
                 'type' =>  Type::nonNull(Type::int()),
             ],
+            'sub_category_id' => [
+                'name' => 'sub_category_id',
+                'type' =>  Type::nonNull(Type::int()),
+            ],
             'name' => [
                 'name' => 'name',
                 'type' =>  Type::nonNull(Type::string()),

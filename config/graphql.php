@@ -108,6 +108,8 @@ return [
                 'product' => App\GraphQL\Queries\ProductQuery::class,
                 //retrieve a collection of products
                 'products' => App\GraphQL\Queries\ProductsQuery::class,
+                //retrieve a collection of products
+                'subCategories' => App\GraphQL\Queries\SubCategoriesQuery::class,
             ],
             'mutation' => [
                 // ExampleMutation::class,
@@ -122,6 +124,7 @@ return [
                 // ExampleType::class,
                 'Category' => App\GraphQL\Types\CategoryType::class,
                 'Product' => App\GraphQL\Types\ProductType::class,
+                'SubCategory' => App\GraphQL\Types\SubCategoryType::class,
             ],
             'middleware' => ['api_token'],
 

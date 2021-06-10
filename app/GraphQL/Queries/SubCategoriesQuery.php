@@ -5,15 +5,16 @@ namespace App\GraphQL\Queries;
 
 use App\Models\Category;
 
+use App\Models\SubCategory;
 use Rebing\GraphQL\Support\Facades\GraphQL;
 use Rebing\GraphQL\Support\Query;
 use Rebing\GraphQL\Support\SelectFields;
 use GraphQL\Type\Definition\Type;
 
-class CategoriesQuery extends Query {
+class SubCategoriesQuery extends Query {
 
     protected $attributes = [
-        'name'  => 'categories',
+        'name'  => 'subCategories',
     ];
 
 //    public function authorize(array $args = [])
@@ -23,14 +24,14 @@ class CategoriesQuery extends Query {
 
     public function type(): Type
     {
-        return Type::listOf(GraphQL::type('Category')); //retrieve a collection of users
+        return Type::listOf(GraphQL::type('SubCategory')); //retrieve a collection of users
     }
 
     public function args(): array
     {
         return [
-            'id'   => [
-                'name' => 'id',
+            'category_id' => [
+                'name' => 'category_id',
                 'type' => Type::listOf(Type::int()),
             ],
         ];
@@ -50,13 +51,10 @@ class CategoriesQuery extends Query {
 
     public function resolve($root, $args)
     {
-        if (isset($args['ids'])) {
-            return Category::find($args['ids']);
+        if (isset($args['category_id'])) {
+            return SubCategory::where('category_id',$args['category_id'])->get();
         }
-//    $categories = Category::all();
-//        foreach($categories as $category) {
-//            dd($category->subCategories);
-//        }
-        return Category::all();
+
+        return SubCategory::all();
     }
 }

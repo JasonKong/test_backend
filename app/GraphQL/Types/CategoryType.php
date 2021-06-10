@@ -3,6 +3,7 @@
 namespace App\GraphQL\Types;
 
 use App\Models\Category;
+use Rebing\GraphQL\Support\Facades\GraphQL;
 use Rebing\GraphQL\Support\Type as GraphQLType;
 use GraphQL\Type\Definition\Type;
 
@@ -27,6 +28,11 @@ class CategoryType extends GraphQLType {
                 'type'          => Type::nonNull(Type::string()),
                 'description'   => 'Name of the category',
             ],
+            'subCategories' => [
+                // This is saying that friends is a "list" of the type "user"
+                'type' => Type::listOf(GraphQL::type('SubCategory')),
+                'description' => 'Sub category of product'
+            ]
         ];
     }
 }

@@ -27,6 +27,10 @@ class ProductType extends GraphQLType {
                 'type'          => Type::nonNull(Type::int()),
                 'description'   => 'ID of the category which the current product belong to',
             ],
+            'sub_category_id' => [
+                'type'          => Type::nonNull(Type::int()),
+                'description'   => 'ID of the category which the current product belong to',
+            ],
             'name' => [
                 //defining the name field as a non-null string
                 'type'          => Type::nonNull(Type::string()),
@@ -41,6 +45,11 @@ class ProductType extends GraphQLType {
                 // This is saying that friends is a "list" of the type "user"
                 'type' => GraphQL::type('Category'),
                 'description' => 'Category of product'
+            ],
+            'subCategory' => [
+                // This is saying that friends is a "list" of the type "user"
+                'type' => GraphQL::type('SubCategory'),
+                'description' => 'Sub category of product'
             ]
         ];
     }

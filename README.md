@@ -6,9 +6,9 @@ The frontend application can be downloaded from [here].
 
 - Get categories
 - Get products
-- Get product by category
+- Get products by category
 - Get product by ID
-- Create new product
+- Create a new product
 - Update a product
 - Delete a product
 

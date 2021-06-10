@@ -38,6 +38,10 @@ class ProductsQuery extends Query {
                 'name' => 'category_id',
                 'type' => Type::int(),
             ],
+            'sub_category_id'    => [
+                'name' => 'sub_category_id',
+                'type' => Type::int(),
+            ],
         ];
     }
 
@@ -62,6 +66,9 @@ class ProductsQuery extends Query {
         $where = function ($query) use ($args) {
             if (isset($args['category_id'])) {
                 $query->where('category_id',$args['category_id']);
+            }
+            if (isset($args['sub_category_id'])) {
+                $query->where('sub_category_id',$args['sub_category_id']);
             }
         };
 
