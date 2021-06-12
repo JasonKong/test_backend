@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class ApiToken
 {
@@ -16,11 +17,15 @@ class ApiToken
      */
     public function handle(Request $request, Closure $next)
     {
-        $api_key = $request->header('ApiKey');
-
-        if ($api_key !== env('API_KEY')) {
-            return response()->json('Unauthorized', 401);
+        try {
+            $auth = JWTAuth::parseToken()->authenticate();
+            if (!$auth) {
+                return response()->json('Unauthorized', 401);
+            }
+        } catch (\Exception $e) {
+            return response()->json('Unauthorized:'.$e->getMessage(), 401);
         }
+
         return $next($request);
     }
 }
